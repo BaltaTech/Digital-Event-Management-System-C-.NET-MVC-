@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Invitaciones.Entidades.Invitado>
+
+@{
+    Layout = "_Layout";
+}
+
+<div style="max-width: 800px; margin: 40px auto; font-family: 'Segoe UI', sans-serif;">
+    <h2 style="color: #2c3e50; text-align: center;">📊 Panel de Control: Invitados</h2>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <thead>
+            <tr style="background-color: #34495e; color: white; text-align: left;">
+                <th style="padding: 15px; border-bottom: 2px solid #ddd;">Nombre</th>
+                <th style="padding: 15px; border-bottom: 2px solid #ddd;">Estado</th>
+                <th style="padding: 15px; border-bottom: 2px solid #ddd;">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var invitado in Model)
+            {
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 12px;">@invitado.Nombre</td>
+                    <td style="padding: 12px;">
+                        @* Aquí podemos usar lógica para poner colores según el estado *@
+                        @if (invitado.Estado == Invitaciones.Enums.EstadoInvitado.Confirmado)
+                        {
+                            <span style="color: #27ae60; font-weight: bold;">✅ Confirmado</span>
+                        }
+                        else if (invitado.Estado == Invitaciones.Enums.EstadoInvitado.NoAsistira)
+                        {
+                            <span style="color: #e74c3c; font-weight: bold;">❌ No asistirá</span>
+                        }
+                        else
+                        {
+                            <span style="color: #f39c12; font-weight: bold;">⏳ Pendiente</span>
+                        }
+                    </td>
+                    <td style="padding: 12px;">
+                        <a asp-action="Detalles" asp-route-nombre="@invitado.Nombre" class="btn btn-link">
+                            Ver Invitación 🔍
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
