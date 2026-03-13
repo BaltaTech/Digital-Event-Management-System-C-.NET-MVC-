@@ -5,13 +5,12 @@ namespace Invitaciones.Repositorios
 {
     public class InvitadoRepository : IInvitadoRepository
     {
-        // Simulamos la base de datos con una lista de invitados 👥
+        // Simulamos deu una base de datos con una lista de invitados
         private readonly List<Invitado> _invitados = new List<Invitado>();
 
         public void Guardar(Invitacion invitacion)
         {
-            // En una app real, aquí guardarías la invitación y sus invitados vinculados
-            // Por ahora, si la invitación trae un invitado, lo sumamos a la lista
+         
             if (invitacion.InvitadoPrincipal != null)
             {
                 _invitados.Add(invitacion.InvitadoPrincipal);
