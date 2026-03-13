@@ -6,8 +6,7 @@ namespace Invitaciones.Entidades
     {
         public int Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public string Contacto { get; set; } = string.Empty; // Corregí 'contacto' a 'Contacto' (C# prefiere mayúsculas)
-
+        public string Contacto { get; set; } = string.Empty; 
         public EstadoInvitado Estado { get; set; } = EstadoInvitado.Pendiente;
         public MetodoContacto PreferenciaEnvio { get; set; }
     }
